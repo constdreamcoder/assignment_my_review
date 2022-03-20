@@ -25,7 +25,7 @@ const Review = (props) => {
                   setNumber(i);
                 }}
                 style={{
-                  backgroundColor: i <= clickedNumber ? "yellow" : "#e0e0e0",
+                  backgroundColor: i <= clickedNumber ? "#FFEB3B" : "#DDDDDD",
                 }}
               ></Success>
             );

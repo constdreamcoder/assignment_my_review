@@ -29,7 +29,7 @@ const Home = (props) => {
                 <Success
                   key={e}
                   style={{
-                    backgroundColor: i <= num ? "yellow" : "#e0e0e0",
+                    backgroundColor: i <= num ? "#FFEB3B" : "#DDDDDD",
                   }}
                 ></Success>
               );
