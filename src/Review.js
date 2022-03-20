@@ -4,17 +4,33 @@ import { useHistory, useLocation } from "react-router-dom";
 
 const Review = (props) => {
   const history = useHistory();
-  const loop_num = props.loop_num;
-  const star = loop_num.map((num, idx) => <Star key={idx}></Star>);
+  const circle = props.loop_num;
+
   const location = useLocation();
   const day = location.pathname[location.pathname.length - 1];
+
+  const [clickedNumber, setNumber] = React.useState();
   return (
     <>
       <Wrapper>
         <Title>
           <Day>{day}요일</Day> 평점 남기기
         </Title>
-        <Line>{star}</Line>
+        <Line>
+          {circle.map((e, i) => {
+            return (
+              <Success
+                key={e}
+                onClick={() => {
+                  setNumber(i);
+                }}
+                style={{
+                  backgroundColor: i <= clickedNumber ? "yellow" : "#e0e0e0",
+                }}
+              ></Success>
+            );
+          })}
+        </Line>
         <Btn
           onClick={() => {
             history.push("/");
@@ -58,12 +74,12 @@ const Line = styled.div`
   width: 100%;
 `;
 
-const Star = styled.div`
+const Success = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 30px;
   margin: 5px;
-  background-color: rgb(221, 221, 221);
+}
 `;
 
 const Btn = styled.button`
