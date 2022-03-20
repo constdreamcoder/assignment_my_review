@@ -4,17 +4,36 @@ import { useHistory } from "react-router-dom";
 
 const Home = (props) => {
   const history = useHistory();
-  const days = ["일", "월", "화", "수", "목", "금", "토"];
-  const loop_num = props.loop_num;
-  const star = loop_num.map((num, idx) => <Star key={idx}></Star>);
+  const circle = props.loop_num;
+  const week = ["일", "월", "화", "수", "목", "금", "토"];
+  // const [week, setWeek] = React.useState([
+  //   { day: "일", rate: 3 },
+  //   { day: "월", rate: 4 },
+  //   { day: "화", rate: 1 },
+  //   { day: "수", rate: 2 },
+  //   { day: "목", rate: 5 },
+  //   { day: "금", rate: 2 },
+  //   { day: "토", rate: 3 },
+  // ]);
+
   return (
     <Wrapper>
       <Title>내 일주일은?</Title>
-      {days.map((day, idx) => {
+      {week.map((day, idx) => {
+        const num = Math.floor(Math.random() * 5);
         return (
           <Line key={idx}>
             <Today>{day}</Today>
-            {star}
+            {circle.map((e, i) => {
+              return (
+                <Success
+                  key={e}
+                  style={{
+                    backgroundColor: i <= num ? "yellow" : "#e0e0e0",
+                  }}
+                ></Success>
+              );
+            })}
             <Arrow
               onClick={() => {
                 history.push(`/review/${day}`);
@@ -55,12 +74,11 @@ const Today = styled.p`
   font-weight: bold;
 `;
 
-const Star = styled.div`
+const Success = styled.div`
 width: 30px;
 height: 30px;
 border-radius: 30px;
 margin: 5px;
-background-color: rgb(255, 235, 59);
 }
 `;
 
