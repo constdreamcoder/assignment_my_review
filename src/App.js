@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
+import { Route, Swtich } from "react-router-dom";
+
+import Home from "./Home";
+import Review from "./Review";
 
 function App() {
+  const loop_num = [0, 1, 2, 3, 4];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route path="/" exact>
+        <Home loop_num={loop_num} />
+      </Route>
+      <Route path="/review" exact>
+        <Review loop_num={loop_num} />
+      </Route>
     </div>
   );
 }
