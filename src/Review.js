@@ -1,16 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 const Review = (props) => {
   const history = useHistory();
   const loop_num = props.loop_num;
-  const star = loop_num.map((num, idx) => <Star></Star>);
+  const star = loop_num.map((num, idx) => <Star key={idx}></Star>);
+  const location = useLocation();
+  const day = location.pathname[location.pathname.length - 1];
   return (
     <>
       <Wrapper>
         <Title>
-          <Day>토요일</Day> 평점 남기기
+          <Day>{day}요일</Day> 평점 남기기
         </Title>
         <Line>{star}</Line>
         <Btn

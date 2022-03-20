@@ -6,26 +6,24 @@ const Home = (props) => {
   const history = useHistory();
   const days = ["일", "월", "화", "수", "목", "금", "토"];
   const loop_num = props.loop_num;
-  const star = loop_num.map((num, idx) => <Star></Star>);
+  const star = loop_num.map((num, idx) => <Star key={idx}></Star>);
   return (
-    <>
-      <Wrapper>
-        <Title>내 일주일은?</Title>
-        {days.map((day, idx) => {
-          return (
-            <Line>
-              <Today>{day}</Today>
-              {star}
-              <Arrow
-                onClick={() => {
-                  history.push("/review");
-                }}
-              ></Arrow>
-            </Line>
-          );
-        })}
-      </Wrapper>
-    </>
+    <Wrapper>
+      <Title>내 일주일은?</Title>
+      {days.map((day, idx) => {
+        return (
+          <Line key={idx}>
+            <Today>{day}</Today>
+            {star}
+            <Arrow
+              onClick={() => {
+                history.push(`/review/${day}`);
+              }}
+            ></Arrow>
+          </Line>
+        );
+      })}
+    </Wrapper>
   );
 };
 
