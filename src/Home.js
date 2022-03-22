@@ -6,20 +6,15 @@ const Home = (props) => {
   const history = useHistory();
   const circle = props.loop_num;
   const week = ["일", "월", "화", "수", "목", "금", "토"];
-  // const [week, setWeek] = React.useState([
-  //   { day: "일", rate: 3 },
-  //   { day: "월", rate: 4 },
-  //   { day: "화", rate: 1 },
-  //   { day: "수", rate: 2 },
-  //   { day: "목", rate: 5 },
-  //   { day: "금", rate: 2 },
-  //   { day: "토", rate: 3 },
-  // ]);
+
+  // create an new week array with the standard of today index.
+  const [today, setToday] = React.useState(new Date().getDay());
+  const newWeek = week.slice(today).concat(week.slice(0, today));
 
   return (
     <Wrapper>
       <Title>내 일주일은?</Title>
-      {week.map((day, idx) => {
+      {newWeek.map((day, idx) => {
         const num = Math.floor(Math.random() * 5);
         return (
           <Line key={idx}>
