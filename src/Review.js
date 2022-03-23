@@ -10,6 +10,18 @@ const Review = (props) => {
   const day = location.pathname[location.pathname.length - 1];
 
   const [clickedNumber, setNumber] = React.useState();
+
+  React.useEffect(() => {
+    const press = (e) => {
+      if ([1, 2, 3, 4, 5].indexOf(parseInt(e.key)) !== -1) {
+        setNumber(parseInt(e.key - 1));
+      }
+    };
+    window.addEventListener("keydown", press);
+
+    return () => window.removeEventListener("keydown", press);
+  }, []);
+
   return (
     <>
       <Wrapper>
