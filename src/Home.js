@@ -55,7 +55,7 @@ const Home = (props) => {
 const Wrapper = styled.div`
   max-width: 350px;
   width: 80vw;
-  height: 63vh;
+  height: 550px;
   margin: 5vh auto;
   padding: 4vh 0px;
   border: 1px solid rgb(221, 221, 221);

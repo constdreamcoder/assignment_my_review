@@ -60,7 +60,7 @@ const Review = (props) => {
 const Wrapper = styled.div`
   max-width: 350px;
   width: 80vw;
-  height: 35vh;
+  height: 270px;
   margin: 5vh auto;
   padding: 5vh 5vw;
   border: 1px solid rgb(221, 221, 221);
