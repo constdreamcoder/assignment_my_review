@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import "./Arrow.css";
+import "./Title.css";
 import { useHistory } from "react-router-dom";
 
 const Home = (props) => {
@@ -13,7 +15,15 @@ const Home = (props) => {
 
   return (
     <Wrapper>
-      <Title>내 일주일은?</Title>
+      <h1>
+        <span>내</span>
+        <span> </span>
+        <span>일</span>
+        <span>주</span>
+        <span>일</span>
+        <span>은</span>
+        <span>?</span>
+      </h1>
       {newWeek.map((day, idx) => {
         const num = Math.floor(Math.random() * 5);
         return (
@@ -24,16 +34,17 @@ const Home = (props) => {
                 <Success
                   key={e}
                   style={{
-                    backgroundColor: i <= num ? "#FFEB3B" : "#DDDDDD",
+                    backgroundColor: i <= num ? "#F1E1A6" : "#DDDDDD",
                   }}
                 ></Success>
               );
             })}
-            <Arrow
+            <div
+              className="button-up"
               onClick={() => {
                 history.push(`/review/${day}`);
               }}
-            ></Arrow>
+            ></div>
           </Line>
         );
       })}
@@ -44,16 +55,15 @@ const Home = (props) => {
 const Wrapper = styled.div`
   max-width: 350px;
   width: 80vw;
-  height: 90vh;
+  height: 63vh;
   margin: 5vh auto;
-  padding: 5vh 0px;
+  padding: 4vh 0px;
   border: 1px solid rgb(221, 221, 221);
   box-sizing: border-box;
   border-radius: 5px;
-`;
-
-const Title = styled.h3`
-  text-align: center;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
 `;
 
 const Line = styled.div`
@@ -65,8 +75,14 @@ const Line = styled.div`
 `;
 
 const Today = styled.p`
-  margin: 0px 0.5rem 0px 0px;
+  content: counter(step-counter);
+  margin: 0px 5px 0px 0px;
+  font-size: 20px;
+  background-color: rgb(0, 200, 200);
+  color: white;
   font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 3px;
 `;
 
 const Success = styled.div`
@@ -75,22 +91,6 @@ height: 30px;
 border-radius: 30px;
 margin: 5px;
 }
-`;
-
-const Arrow = styled.div`
-  appearance: none;
-  background-color: transparent;
-  border-color: transparent purple;
-  width: 0px;
-  height: 0px;
-  border-top-width: 1rem;
-  border-top-style: solid;
-  border-bottom-width: 1rem;
-  border-bottom-style: solid;
-  border-left-width: 1.6rem;
-  border-left-style: solid;
-  color: rgb(255, 255, 255);
-  cursor: pointer;
 `;
 
 export default Home;

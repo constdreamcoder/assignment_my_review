@@ -1,0 +1,27 @@
+body {
+  text-align: center;
+}
+
+.btn-9 {
+  background: #00c897;
+  font-size: 20px;
+  color: white;
+  border-radius: 7px;
+  box-shadow: 0 7px 0px #557b83;
+  display: inline-block;
+  transition: all 0.2s;
+  position: relative;
+  padding: 20px 25px;
+  top: 0;
+  right: 22px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 900;
+  font-size: 25px;
+}
+
+.btn-9:active {
+  top: 3px;
+  box-shadow: 0 2px 0px #a2d5ab;
+  transition: all 0.2s;
+}

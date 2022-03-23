@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import "./Button.css";
 import { useHistory, useLocation } from "react-router-dom";
 
 const Review = (props) => {
@@ -37,19 +38,20 @@ const Review = (props) => {
                   setNumber(i);
                 }}
                 style={{
-                  backgroundColor: i <= clickedNumber ? "#FFEB3B" : "#DDDDDD",
+                  backgroundColor: i <= clickedNumber ? "#F1E1A6" : "#DDDDDD",
                 }}
               ></Success>
             );
           })}
         </Line>
-        <Btn
+        <div
+          className="btn-9"
           onClick={() => {
             history.push("/");
           }}
         >
           평점 남기기
-        </Btn>
+        </div>
       </Wrapper>
     </>
   );
@@ -58,24 +60,29 @@ const Review = (props) => {
 const Wrapper = styled.div`
   max-width: 350px;
   width: 80vw;
-  height: 90vh;
+  height: 35vh;
   margin: 5vh auto;
   padding: 5vh 5vw;
   border: 1px solid rgb(221, 221, 221);
   box-sizing: border-box;
   border-radius: 5px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
 `;
 
 const Title = styled.h3`
   text-align: center;
 `;
 
-const Day = styled.span`
+const Day = styled.div`
+  display: inline-block;
   color: rgb(255, 255, 255);
   font-weight: 900;
   background: orange;
   padding: 0.2rem;
   border-radius: 5px;
+  color: white;
 `;
 
 const Line = styled.div`
@@ -92,15 +99,6 @@ const Success = styled.div`
   border-radius: 30px;
   margin: 5px;
 }
-`;
-
-const Btn = styled.button`
-  width: 100%;
-  background-color: purple;
-  border: none;
-  border-radius: 5px;
-  padding: 1rem;
-  color: rgb(255, 255, 255);
 `;
 
 export default Review;
